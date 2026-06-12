@@ -188,10 +188,6 @@ Issues and PRs welcome — especially around backtest rigor and translation
 robustness. Please keep the "AI must not guess" principle intact: any change that
 lets the model invent operators or logic defeats the purpose.
 
-## License
-
-MIT (suggested). Add a `LICENSE` file before publishing.
-
 ## Disclaimer
 
 For research and educational use only. Nothing here is investment advice, and the
