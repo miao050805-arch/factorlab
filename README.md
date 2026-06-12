@@ -2,10 +2,10 @@
 
 **AI-assisted factor reproduction and evaluation.**
 
-> 中文简介:FactorLab 是一个 AI 辅助的因子复现工具。给它一个因子库源码 + 算子文件,
-> 它会用 AST 找出每个因子依赖的算子的确切源码,交给 LLM **严格照源码翻译**成可运行的
-> `compute_factor(df)`(不许凭经验猜测),再用项目里的真实算子在你的数据上做简单回测,
-> 生成 IC / 分层 / 多空报告。
+中文简介：FactorLab 是一个 AI 辅助的因子复现与评估工具。用户提供外部因子库源码和对应的算子/helper 文件后，系统会先通过 Python AST 扫描函数、因子定义和依赖关系，尽可能找出每个因子实际调用的算子源码，再将这些上下文交给 LLM。LLM 的任务不是凭经验重写因子，而是严格依据源码上下文，将因子翻译成可运行的 `compute_factor(df)`。随后系统会在用户数据上执行因子计算，并生成 IC、Rank IC、分层收益、多空组合等基础评估报告。
+
+FactorLab 的核心原则是：AI 不允许自由猜测。AST 层先提供明确的代码上下文，LLM 只能在这些上下文内进行翻译；如果缺少字段、缺少 helper，或者当前函数并不是因子，模型应当明确返回缺失信息，而不是自行补全逻辑。
+
 
 You hand FactorLab an external factor library (e.g. WorldQuant-101 / GTJA-191 style)
 plus the project that defines its operators. It scans the factors, traces the exact
